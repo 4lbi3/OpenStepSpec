@@ -30,6 +30,10 @@
 
 OpenSpec aligns humans and AI coding assistants with spec-driven development so you agree on what to build before any code is written. **No API keys required.**
 
+## Fork differences
+
+This fork adjusts the proposal workflow so supporting documents are drafted sequentially—write `proposal.md`, `design.md` (when needed), `tasks.md`, and spec deltas one at a time—and pause after each file for the user's validation before moving on. The upstream repository generated proposal artifacts together, while this fork emphasizes ordered, user-validated creation to respect the dependencies between documents.
+
 ## Why OpenSpec?
 
 AI coding assistants are powerful but unpredictable when requirements live in chat history. OpenSpec adds a lightweight specification workflow that locks intent before implementation, giving you deterministic, reviewable outputs.
@@ -126,10 +130,12 @@ These tools automatically read workflow instructions from `openspec/AGENTS.md`. 
 #### Prerequisites
 - **Node.js >= 20.19.0** - Check your version with `node --version`
 
-#### Step 1: Install the CLI globally
+#### Step 1: Install the CLI globally (this fork)
+
+Install directly from this fork to avoid pulling the upstream package:
 
 ```bash
-npm install -g @fission-ai/openspec@latest
+npm install -g github:4lbi3/OpenStepSpec
 ```
 
 Verify installation:
@@ -354,9 +360,9 @@ Run `openspec update` whenever someone switches tools so your agents pick up the
 
 ## Updating OpenSpec
 
-1. **Upgrade the package**
+1. **Upgrade the package from this fork**
    ```bash
-   npm install -g @fission-ai/openspec@latest
+   npm install -g github:4lbi3/OpenStepSpec
    ```
 2. **Refresh agent instructions**
    - Run `openspec update` inside each project to regenerate AI guidance and ensure the latest slash commands are active.

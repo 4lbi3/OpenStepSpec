@@ -7,9 +7,9 @@ Instructions for AI coding assistants using OpenSpec for spec-driven development
 - Search existing work: \`openspec spec list --long\`, \`openspec list\` (use \`rg\` only for full-text search)
 - Decide scope: new capability vs modify existing capability
 - Pick a unique \`change-id\`: kebab-case, verb-led (\`add-\`, \`update-\`, \`remove-\`, \`refactor-\`)
-- Scaffold: \`proposal.md\`, \`tasks.md\`, \`design.md\` (only if needed), and delta specs per affected capability
+- Scaffold a change directory and create proposal docs one at a time (\`proposal.md\`, \`design.md\` when needed, \`tasks.md\`, then spec deltas)
 - Write deltas: use \`## ADDED|MODIFIED|REMOVED|RENAMED Requirements\`; include at least one \`#### Scenario:\` per requirement
-- Validate: \`openspec validate [change-id] --strict\` and fix issues
+- Pause for user validation after each document before moving to the next; run \`openspec validate [change-id] --strict\` only when the user requests it or after they approve a file
 - Request approval: Do not start implementation until proposal is approved
 
 ## Three-Stage Workflow
@@ -42,9 +42,10 @@ Skip proposal for:
 
 **Workflow**
 1. Review \`openspec/project.md\`, \`openspec list\`, and \`openspec list --specs\` to understand current context.
-2. Choose a unique verb-led \`change-id\` and scaffold \`proposal.md\`, \`tasks.md\`, optional \`design.md\`, and spec deltas under \`openspec/changes/<id>/\`.
-3. Draft spec deltas using \`## ADDED|MODIFIED|REMOVED Requirements\` with at least one \`#### Scenario:\` per requirement.
-4. Run \`openspec validate <id> --strict\` and resolve any issues before sharing the proposal.
+2. Choose a unique verb-led \`change-id\` and scaffold \`openspec/changes/<id>/\`.
+3. Create proposal documents sequentially (\`proposal.md\`, \`design.md\` when needed, \`tasks.md\`, then spec deltas), stopping after each file so the user can review and validate it before you continue; run \`openspec validate <id> --strict\` only if the user asks or after they approve the file.
+4. Draft spec deltas using \`## ADDED|MODIFIED|REMOVED Requirements\` with at least one \`#### Scenario:\` per requirement.
+5. Run \`openspec validate <id> --strict\` and resolve any issues before sharing the proposal.
 
 ### Stage 2: Implementing Changes
 Track these steps as TODOs and complete them one by one.
